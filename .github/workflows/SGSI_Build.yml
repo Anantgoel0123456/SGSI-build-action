@@ -81,12 +81,17 @@ jobs:
              fi
              ls "upload"
 
-       - name: Upload SGSI to action-gh-release...
-         if: env.upload_action-gh-release == 'true'
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: ${{ github.workspace }}/SGSI-build-tool/upload/*
-           name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
-           tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
-           bodyFile: "${{ github.workspace }}/SGSI-build-tool/SGSI/build_info.txt"
-           token: ${{ secrets.GITHUB_TOKEN }}
+       - name: Zip Aonly and upload 
+         run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
+       - name: Zip AB and upload 
+         run: |
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-Aonly-*.txt
