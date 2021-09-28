@@ -7,8 +7,8 @@ on:
     types: [started]
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/ota/redfin-ota-spp2.210219.008-3d61e529.zip'
-  ZIP_NAME: 'update.zip'
+  ROM_URL: 'https://github.com/Stellar-OS/releases/releases/download/StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric-1920/StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric.zip'
+  ZIP_NAME: 'StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'SGSI.zip'
@@ -27,11 +27,6 @@ jobs:
        - name: Clean Up
          run: |       
            docker rmi `docker images -q`
-           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
-           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-           sudo -E apt-get update
-           sudo -E apt-get -y autoremove --purge
-           sudo -E apt-get clean
            df -h
            
        - name: Setting up the SPICES
