@@ -7,8 +7,8 @@ on:
     types: [started]
     
 env:              
-  ROM_URL: 'https://github.com/Stellar-OS/releases/releases/download/StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric-1920/StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric.zip'
-  ZIP_NAME: 'StellarOS-WeebEdition-1.1-Beru-20210924-OFFICIAL-cedric.zip'
+  ROM_URL: 'https://store-vivo-asia-3.oss-ap-southeast-1.aliyuncs.com/ZDDi1WlyKt3GqD2d/developer/common/2021/8/3/PD2049F_EX_A_60.0.23-BWDATA-update-full_1627444624.zip'
+  ZIP_NAME: 'PD2049F_EX_A_60.0.23-BWDATA-update-full_1627444624.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'SGSI.zip'
